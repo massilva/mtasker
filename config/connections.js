@@ -74,7 +74,7 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  postgresqlServer: {
+  postgresqlLocal: {
     adapter: 'sails-postgresql',
     host: 'localhost',
     user: 'postgres', // optional
@@ -82,6 +82,13 @@ module.exports.connections = {
     database: 'mtaskerdb' //optional
   }
 
+  postgresqlServer: {
+    adapter: 'sails-postgresql',
+    host: 'ec2-54-243-185-99.compute-1.amazonaws.com',
+    user: 'umlgontzgpkrnn', // optional
+    password: '822a0e91b8f2830dd1c9a7ab49b87692b73f3ee7e2510477254601b92d466be2', // optional
+    database: 'd81qf3sggklus2' //optional
+  }
 
   /***************************************************************************
   *                                                                          *
