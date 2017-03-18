@@ -80,7 +80,7 @@ module.exports.connections = {
     user: 'postgres', // optional
     password: 'postgres', // optional
     database: 'mtaskerdb' //optional
-  }
+  },
 
   postgresqlServer: {
     adapter: 'sails-postgresql',
