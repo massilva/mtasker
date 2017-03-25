@@ -14,7 +14,11 @@
   },
   "homepage": "https://github.com/massilva/mtasker#readme",
   "devDependencies": {
-    "jshint": "^2.9.4"
+    "bcrypt": "^1.0.2",
+    "jshint": "^2.9.4",
+    "mocha": "^3.2.0",
+    "sails-memory": "^0.10.7",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "ejs": "2.3.4",
@@ -37,7 +41,7 @@
     "sails-postgresql": "^0.11.4"
   },
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint app.js",
+    "test": "NODE_ENV=test && mocha test/bootstrap.test.js test/integration/**/*.test.js && ./node_modules/jshint/bin/jshint app.js",
     "debug": "node debug app.js",
     "start": "node app.js"
   }

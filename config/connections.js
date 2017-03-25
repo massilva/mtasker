@@ -88,8 +88,11 @@ module.exports.connections = {
     user: 'umlgontzgpkrnn', // optional
     password: '822a0e91b8f2830dd1c9a7ab49b87692b73f3ee7e2510477254601b92d466be2', // optional
     database: 'd81qf3sggklus2' //optional
-  }
+  },
 
+  test: {
+    adapter: 'sails-memory'
+  }
   /***************************************************************************
   *                                                                          *
   * More adapters: https://github.com/balderdashy/sails                      *
