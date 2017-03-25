@@ -10,7 +10,7 @@ describe('CategoryController', function() {
     agent = request.agent(sails.hooks.http.app);
     agent.post('/category')
       .send({
-        name: createAttrs.username,
+        name: createAttrs.name,
         json: true
       })
       .expect(201)
