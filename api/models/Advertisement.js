@@ -16,6 +16,7 @@ module.exports = {
       type: 'float'
     },
     period: {
+      type: 'string',
       enum: ['daily', 'weekly', 'monthly', 'quarterly', 'semesterly', 'annual'],
       defaultsTo: 'weekly'
     },
@@ -29,6 +30,10 @@ module.exports = {
     },
     category: {
       model: 'category'
+    },
+    posted: {
+      type: 'boolean',
+      defaultsTo: false
     }
   }
 };
