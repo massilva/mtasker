@@ -22,21 +22,31 @@ const AdvertisementModal = React.createClass({
   },
 
   getInitialState: function () {
-    return { showModal: false };
+    return {isLoading: false, showModal: false };
   },
 
   close: function () {
-    this.setState({ showModal: false });
+    this.setState({isLoading: false, showModal: false });
   },
 
   open: function () {
-    this.setState({ showModal: true });
+    this.setState({isLoading: false, showModal: true });
+  },
+
+  handleClick() {
+    this.setState({isLoading: true, showModal: true});
+    // This probably where you would have an `ajax` call
+    setTimeout(() => {
+      // Completed of async action, set loading state back
+      this.setState({isLoading: false, showModal: true});
+    }, 2000);
   },
 
   /**
    * @return {object}
    */
   render: function() {
+    var isLoading = this.state.isLoading;
     return (
       <div>
         <Button onClick={this.open}><Glyphicon glyph={this.props.glyph} /> {this.props.btnTitle}</Button>
@@ -48,7 +58,13 @@ const AdvertisementModal = React.createClass({
             <AdvertisementForm></AdvertisementForm>
           </Modal.Body>
           <Modal.Footer>
-             <Button onClick={this.close}>Close</Button>
+            <Button
+               bsStyle="success"
+               disabled={isLoading}
+               onClick={!isLoading ? this.handleClick : null}>
+               {isLoading ? 'Saving...' : 'Save'}
+             </Button>
+             <Button bsStyle="danger" onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>

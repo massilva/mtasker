@@ -9,9 +9,6 @@ FormControl = Bootstrap.FormControl;
 ControlLabel = Bootstrap.ControlLabel;
 HelpBlock = Bootstrap.HelpBlock;
 
-const MINLEN = 4;
-const MAXLEN = 32;
-
 const TitleInput = React.createClass({
 
   propTypes: {
@@ -29,12 +26,7 @@ const TitleInput = React.createClass({
   },
 
   getValidationState(isToValidateState) {
-    if (isToValidateState) {
-      const length = this.state.value.length;
-      if (length >= MINLEN && length <= MAXLEN) return 'success';
-      else if (length > 0) return 'error';
-    }
-    return null;
+    return (isToValidateState && this.state.value.length > 0) ? 'success' : null;
   },
 
   handleChange(e) {
@@ -48,12 +40,13 @@ const TitleInput = React.createClass({
     return (
       <FormGroup controlId={this.props.id} validationState={this.getValidationState(this.props.toValidationState)}>
         <ControlLabel>{this.props.label}</ControlLabel>
-        <FormControl type='text' placeholder={this.props.placeholder} value={this.props.value} onChange={this._onChange} maxLength={MAXLEN}/>
+        <FormControl type='number' placeholder={this.props.placeholder} value={this.props.value} onChange={this._onChange} min="0" max="1000000" step={0.10}/>
         <FormControl.Feedback />
-        <HelpBlock>Min: {MINLEN}, max: {MAXLEN} characters.</HelpBlock>
+        {this.props.help && <HelpBlock>{this.props.help}</HelpBlock>}
       </FormGroup>
     );
   },
+
   /**
    * @param {object} event
    */

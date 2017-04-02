@@ -31,7 +31,7 @@ const TitleInput = React.createClass({
     this.setState({ value: e.target.value });
   },
 
-  getLettersLeft() {
+  getCountCharactersLeft() {
     return MAXLEN - this.state.value.length;
   },
 
@@ -44,7 +44,7 @@ const TitleInput = React.createClass({
         <ControlLabel>{this.props.label}</ControlLabel>
         <FormControl componentClass="textarea" placeholder={this.props.placeholder} value={this.props.value} onChange={this._onChange} maxLength={MAXLEN}/>
         <FormControl.Feedback />
-        <HelpBlock>{this.getLettersLeft()} left</HelpBlock>
+        <HelpBlock>{this.getCountCharactersLeft()} characters left</HelpBlock>
       </FormGroup>
     );
   },

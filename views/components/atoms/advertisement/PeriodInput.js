@@ -1,4 +1,4 @@
-var React, ReactPropTypes, Bootstrap, Form, FormGroup, ControlLabel, FormControl, HelpBlock;
+var React, ReactPropTypes, Bootstrap, Form, FormGroup, ControlLabel, FormControl, HelpBlock, AdvertisementBO;
 
 React = require('react');
 ReactPropTypes = React.PropTypes;
@@ -9,8 +9,8 @@ FormControl = Bootstrap.FormControl;
 ControlLabel = Bootstrap.ControlLabel;
 HelpBlock = Bootstrap.HelpBlock;
 
-const MINLEN = 4;
-const MAXLEN = 32;
+AdvertisementBO = require('../../../../api/models/Advertisement');
+
 
 const TitleInput = React.createClass({
 
@@ -29,12 +29,12 @@ const TitleInput = React.createClass({
   },
 
   getValidationState(isToValidateState) {
-    if (isToValidateState) {
-      const length = this.state.value.length;
-      if (length >= MINLEN && length <= MAXLEN) return 'success';
-      else if (length > 0) return 'error';
+    const value = this.state.value;
+    if (isToValidateState && value.length) {
+      if (value === 'select') return 'error';
+      else return 'success';
     }
-    return null;
+    return  null;
   },
 
   handleChange(e) {
@@ -45,15 +45,24 @@ const TitleInput = React.createClass({
    * @return {object}
    */
   render: function() {
+    var options = AdvertisementBO.attributes.period.enum.map(function (e) {
+      return (
+        <option key={e} value={e}>{e.replace(/\b\w/g, l => l.toUpperCase())}</option>
+      );
+    });
     return (
       <FormGroup controlId={this.props.id} validationState={this.getValidationState(this.props.toValidationState)}>
         <ControlLabel>{this.props.label}</ControlLabel>
-        <FormControl type='text' placeholder={this.props.placeholder} value={this.props.value} onChange={this._onChange} maxLength={MAXLEN}/>
+        <FormControl componentClass="select" onChange={this._onChange}>
+          <option value="select">Select one...</option>
+          {options}
+        </FormControl>
         <FormControl.Feedback />
-        <HelpBlock>Min: {MINLEN}, max: {MAXLEN} characters.</HelpBlock>
+        {this.props.help && <HelpBlock>{this.props.help}</HelpBlock>}
       </FormGroup>
     );
   },
+
   /**
    * @param {object} event
    */

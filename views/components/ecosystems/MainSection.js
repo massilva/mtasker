@@ -54,13 +54,13 @@ MainSection = React.createClass({
       cols = [];
       for (j = 0; j < aux.length; j++) {
         cols.push(
-          <Col xs={6} md={4}>
-            <TodoItem key={aux[j]} todo={allTodos[aux[j]]} />
+          <Col key={i + "_" + aux[j]} xs={6} md={4}>
+            <TodoItem key={i + "_" + aux[j]} todo={allTodos[aux[j]]} />
           </Col>
         )
       }
       rows.push(
-        <Row>
+        <Row key={i}>
           {cols}
         </Row>
       )
