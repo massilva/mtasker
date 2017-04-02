@@ -120,4 +120,5 @@ nbproject
 node_modules
 npm-debug.log
 
-bundle.js
+assets/js/bundle.js
+assets/**/index.css
