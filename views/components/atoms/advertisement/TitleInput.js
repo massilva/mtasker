@@ -37,10 +37,6 @@ const TitleInput = React.createClass({
     return null;
   },
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
-
   /**
    * @return {object}
    */

@@ -37,10 +37,6 @@ const TitleInput = React.createClass({
     return  null;
   },
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
-
   /**
    * @return {object}
    */
@@ -53,7 +49,7 @@ const TitleInput = React.createClass({
     return (
       <FormGroup controlId={this.props.id} validationState={this.getValidationState(this.props.toValidationState)}>
         <ControlLabel>{this.props.label}</ControlLabel>
-        <FormControl componentClass="select" onChange={this._onChange}>
+        <FormControl componentClass="select">
           <option value="select">Select one...</option>
           {options}
         </FormControl>

@@ -36,17 +36,13 @@ const TitleInput = React.createClass({
     return  null;
   },
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
-
   /**
    * @return {object}
    */
   render: function() {
-    var options = ['informatica'].map(function (e) {
+    var options = [{'name': 'techno', id: '1'}].map(function (e) {
       return (
-        <option key={e} value={e}>{e.replace(/\b\w/g, l => l.toUpperCase())}</option>
+        <option key={e.id} value={e.id}>{e.name.replace(/\b\w/g, l => l.toUpperCase())}</option>
       );
     });
     return (
@@ -59,7 +55,7 @@ const TitleInput = React.createClass({
         <Row>
           <Col xs={12} md={8}>
             <FormGroup controlId={this.props.id} validationState={this.getValidationState(this.props.toValidationState)}>
-              <FormControl componentClass="select" onChange={this._onChange}>
+              <FormControl componentClass="select">
                 <option value="select">Select one...</option>
                 {options}
               </FormControl>
