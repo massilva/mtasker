@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     },
     client: {
       src: ['views/**/*.js', 'views/**/*.jsx'],
-      dest: 'assets/js/bundle.js'
+      dest: '.tmp/public/js/bundle.js'
     }
   });
 

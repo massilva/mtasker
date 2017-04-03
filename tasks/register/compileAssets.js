@@ -14,6 +14,7 @@
 module.exports = function(grunt) {
   grunt.registerTask('compileAssets', [
     'clean:dev',
+    'browserify',
     'jst:dev',
     'less:dev',
     'copy:dev',

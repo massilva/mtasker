@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'assets/styles/less/',
         src: ['index.less'],
-        dest: 'assets/styles/',
+        dest: '.tmp/public/styles/',
         ext: '.css'
       }]
     }
