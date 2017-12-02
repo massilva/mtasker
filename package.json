@@ -25,7 +25,7 @@
     "browserify": "^14.1.0",
     "classnames": "^2.2.5",
     "cssstyle": "^0.2.37",
-    "ejs": "2.3.4",
+    "ejs": "2.5.5",
     "flux": "^3.1.2",
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.0.0",
